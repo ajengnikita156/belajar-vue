@@ -1,9 +1,25 @@
 <script setup>
+import { ref } from 'vue';
 let msg = "Hallo Kamu";
 let headName = "<h1>NAMA SAYA AJENG<h1>";
 let number = 4 ;
 let ok = 'YES';
 let seen = 1 ;
+
+// Split Reverse Message
+let message = ref("Hai Vue JS");
+function balikkanPesan() {
+  message.value = message.value.split('').reverse().join('');
+}
+// pengulangan
+let todos = [
+  { teks: 'Belajar JavaScript' },
+  { teks: 'Belajar Vue' },
+  { teks: 'Buat proyek keren' }
+]
+
+// Input
+let pesan = ref("Hai Vue");
 </script>
 
 <template>
@@ -23,6 +39,24 @@ let seen = 1 ;
 
     <!-- direktri -->
     <p v-if="seen">Sekarang Anda bisa melihatku</p>
+
+ <!-- Split Button -->
+ <p>{{ message }}</p>
+  <button v-on:click="balikkanPesan">Balikkan Pesan</button>
+
+  <!-- For -->
+  <br> Pengulangan
+  <ol>
+    <li v-for="todo in todos">
+      {{ todo.teks }}
+    </li>
+  </ol>
+
+  <!-- Input -->
+  <p>{{ pesan }}</p>
+  <input v-model="pesan">
+
+
 
     <!-- argumen -->
     <a v-bind:href="url">siapa kamu </a><br>
